@@ -8,4 +8,4 @@
 
 * 感谢田田提供支持引导，感谢moersing提供支持，感谢bblink提供开发环境。
 
-* @copyright-BBFE
+* ©copyright-BBFE
