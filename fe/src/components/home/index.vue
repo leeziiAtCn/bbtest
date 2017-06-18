@@ -1,5 +1,6 @@
 <template>
     <div>
+        <v-header title='Product List'></v-header>
         <el-row class="body">
             <el-col :span="6" class='pro' v-for='v,i in proList' :key='v.text'>
                 <div class="pro-i" @click="turnItem(v)">
@@ -15,6 +16,7 @@
     </div>
 </template>
 <script type='text/ecmascript-6'>
+  import vHeader from 'components/common/v-header'
   export default {
     data () {
       return {
@@ -41,6 +43,9 @@
     },
     created () {
       this.getPro()
+    },
+    components: {
+      vHeader
     }
   }
 </script>
