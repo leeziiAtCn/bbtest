@@ -53,6 +53,13 @@ module.exports = {
       where: {}
     })
   },
+  searchByid (params) {
+    return ser.findAll({
+      where: {
+        did: params.id
+      }
+    })
+  },
   searchLive(){
     return ser.findAll({
       where: {

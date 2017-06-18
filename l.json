@@ -1,0 +1,54 @@
+{
+  "Wi-Fi": [
+    {
+      "address": "fe80::90f2:214d:ad0f:9254",
+      "netmask": "ffff:ffff:ffff:ffff::",
+      "family": "IPv6",
+      "mac": "84:ef:18:38:23:68",
+      "scopeid": 11,
+      "internal": false
+    },
+    {
+      "address": "192.168.0.101",
+      "netmask": "255.255.255.0",
+      "family": "IPv4",
+      "mac": "84:ef:18:38:23:68",
+      "internal": false
+    }
+  ],
+  "Loopback Pseudo-Interface 1": [
+    {
+      "address": "::1",
+      "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+      "family": "IPv6",
+      "mac": "00:00:00:00:00:00",
+      "scopeid": 0,
+      "internal": true
+    },
+    {
+      "address": "127.0.0.1",
+      "netmask": "255.0.0.0",
+      "family": "IPv4",
+      "mac": "00:00:00:00:00:00",
+      "internal": true
+    }
+  ],
+  "Local Area Connection* 11": [
+    {
+      "address": "2001:0:9d38:6ab8:2cd8:44f:8b1d:c5d0",
+      "netmask": "ffff:ffff:ffff:ffff::",
+      "family": "IPv6",
+      "mac": "00:00:00:00:00:00",
+      "scopeid": 0,
+      "internal": false
+    },
+    {
+      "address": "fe80::2cd8:44f:8b1d:c5d0",
+      "netmask": "ffff:ffff:ffff:ffff::",
+      "family": "IPv6",
+      "mac": "00:00:00:00:00:00",
+      "scopeid": 7,
+      "internal": false
+    }
+  ]
+}

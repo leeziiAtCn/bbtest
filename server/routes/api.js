@@ -7,7 +7,9 @@ router.get('/pro', async ctx => {
   ctx.response.body = await prod_m.searchAll()
 })
 router.get('/ser', async ctx => {
-  ctx.response.body = await ser_m.searchAll()
+  ctx.response.body = await ser_m.searchByid({
+    id: ctx.query.id
+  })
 })
 router.get('/interface', async ctx => {
   ctx.response.body = await api_m.searchbyDid({
