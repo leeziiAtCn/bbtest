@@ -7,10 +7,10 @@ module.exports = {
     })
   },
   pro: {
-    NODE_ENV: '"devTest"',
+    NODE_ENV: '"production"',
     buildTime: +new Date(),
     http: JSON.stringify({
-      root: 'http://127.0.0.1:3000'
+      root: 'http://118.89.195.97:3000'
     })
   }
 }
