@@ -16,21 +16,21 @@ let sequelize = new Sequelize('test', sqlOpt.name, sqlOpt.pwd, {
 let prod = sequelize.define(
   'pro',
   {
-  id: {
-    type: Sequelize.STRING,
+    id: {
+      type: Sequelize.STRING,
       primaryKey: true
-  },
-  name: Sequelize.STRING,
+    },
+    name: Sequelize.STRING,
     interfaceCount: Sequelize.INTEGER,
     userCount: Sequelize.INTEGER,
     status: Sequelize.INTEGER,
     createTime: Sequelize.INTEGER,
     updateTime: Sequelize.INTEGER
-}, {
-  freezeTableName: true,
+  }, {
+    freezeTableName: true,
     tableName: 'proList',
     timestamps: false
-}
+  }
 )
 module.exports = {
   search (params) {
@@ -40,7 +40,7 @@ module.exports = {
       }
     })
   },
-  searchAll(){
+  searchAll () {
     return prod.findAll({
       where: {}
     })
@@ -56,14 +56,14 @@ module.exports = {
       updateTime: params.updateTime || 0
     })
   },
-  del(params){
+  del (params) {
     return prod.destroy({
       where: {
         id: params.id
       }
     })
   },
-  delAll(){
+  delAll () {
     return prod.destroy({
       where: {}
     })

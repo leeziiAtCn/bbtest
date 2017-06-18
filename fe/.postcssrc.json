@@ -1,0 +1,10 @@
+{
+  "plugins": {
+  "autoprefixer": {
+    "browsers": [
+      "last 6 ios version",
+      "last 4 android version"
+    ]
+  }
+}
+}

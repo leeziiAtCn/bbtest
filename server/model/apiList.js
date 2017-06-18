@@ -52,6 +52,13 @@ module.exports = {
       }
     })
   },
+  searchbyDid(params){
+    return api.findAll({
+      where: {
+        did: params.id
+      }
+    })
+  },
   searchAll(params){
     return api.findAll({
       where: {}
