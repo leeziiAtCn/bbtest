@@ -21,7 +21,7 @@ let params = sequelize.define(
     },
     id: Sequelize.STRING,
     key: Sequelize.STRING,
-    isheader: Sequelize.STRING,
+    type: Sequelize.STRING,
     did: Sequelize.STRING,
     default: Sequelize.STRING,
     description: Sequelize.STRING,
@@ -38,8 +38,8 @@ module.exports = {
       id: param.id,
       did: param.did,
       pid: param.pid,
-      isheader: param.isheader,
       key: param.key,
+      type: param.type,
       default: param.default,
       required: param.required,
       description: param.description

@@ -7,4 +7,4 @@
 
 * 感谢田田提供支持引导，感谢moersing提供vue模板支持，感谢bblink提供开发环境。
 
-* ©Copyright-BBFE author: leezii at 2017-06-18
+* Copyright(c)-BBFE author: leezii at 2017-06-18

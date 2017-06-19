@@ -40,7 +40,7 @@
                                 </template>
                             </el-table-column>
                             <el-table-column
-                                    prop="isheader"
+                                    prop="type"
                                     label="参数位置">
                             </el-table-column>
                             <el-table-column
@@ -109,10 +109,19 @@
           }
         }).then(res => {
           this.description = res.data.sort((a, b) => {
-            return a.isheader - b.isheader
+            return a.type - b.type
           })
           this.description.map(val => {
-            val.isheader = val.isheader === 0 ? 'header' : 'body'
+            switch (val.type) {
+              case 1 :
+                val.type = 'body'
+                break
+              case 0 :
+                val.type = 'header'
+                break
+              case 2 :
+                val.type = 'rest'
+            }
             switch (val.required) {
               case 1 :
                 val.required = '是'
