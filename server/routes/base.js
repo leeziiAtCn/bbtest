@@ -43,7 +43,8 @@ router.get('/rebuild', async (ctx, next) => {
         description: '',
         createTime: +new Date(),
         status: +v.type,
-        did: did[i]
+        did: did[i],
+        baseUrl: ''
       })
       // 将接口存入表中
       for (let value of v.data) {

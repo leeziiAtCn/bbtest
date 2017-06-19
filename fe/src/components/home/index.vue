@@ -39,7 +39,7 @@
       },
       turnItem (item) {
         this.$router.push(`/interface?id=${item.id}`)
-      }
+      },
     },
     created () {
       this.getPro()
@@ -51,7 +51,7 @@
 </script>
 <style lang='less' scoped>
     .body {
-        margin-top: 20px;
+        margin-top: 80px;
         .pro {
             height: 190px;
             padding: 20px;

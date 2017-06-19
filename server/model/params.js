@@ -49,5 +49,13 @@ module.exports = {
     return params.destroy({
       where: {}
     })
+  },
+  searchBy2id (p) {
+    return params.findAll({
+      where: {
+        id: p.id,
+        did: p.did
+      }
+    })
   }
 }

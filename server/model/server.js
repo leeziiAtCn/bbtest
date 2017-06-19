@@ -24,7 +24,8 @@ let ser = sequelize.define(
     description: Sequelize.STRING,
     status: Sequelize.INTEGER,
     createTime: Sequelize.INTEGER,
-    did: Sequelize.STRING
+    did: Sequelize.STRING,
+    baseUrl: Sequelize.STRING
   },
   {
     freezeTableName: true,
@@ -40,7 +41,8 @@ module.exports = {
       description: params.description,
       status: params.status,
       createTime: params.createTime,
-      did: params.did
+      did: params.did,
+      baseUrl: params.baseUrl
     })
   },
   delAll(){
