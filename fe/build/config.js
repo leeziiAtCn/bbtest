@@ -10,7 +10,7 @@ module.exports = {
     NODE_ENV: '"production"',
     buildTime: +new Date(),
     http: JSON.stringify({
-      root: 'http://118.89.195.97:3000'
+      root: 'http://192.168.0.116:3000'
     })
   }
 }

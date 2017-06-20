@@ -26,6 +26,7 @@ let params = sequelize.define(
     default: Sequelize.STRING,
     description: Sequelize.STRING,
     required: Sequelize.INTEGER,
+    what: Sequelize.STRING,
   }, {
     freezeTableName: true,
     tableName: 'params',
@@ -42,7 +43,8 @@ module.exports = {
       type: param.type,
       default: param.default,
       required: param.required,
-      description: param.description
+      description: param.description,
+      what: param.what
     })
   },
   delAll(){
@@ -55,6 +57,17 @@ module.exports = {
       where: {
         id: p.id,
         did: p.did
+      }
+    })
+  },
+  changeParam(p){
+    return params.update({
+      key: p.key,
+      default: p.defaultValue,
+      what: p.what
+    }, {
+      where: {
+        pid: p.pid
       }
     })
   }

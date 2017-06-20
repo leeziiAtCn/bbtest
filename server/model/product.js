@@ -8,7 +8,7 @@ let sequelize = new Sequelize('test', sqlOpt.name, sqlOpt.pwd, {
   dialect: 'mysql',
   port: sqlOpt.port,
   pool: {
-    max: 50,
+    max: 500,
     min: 0,
     idle: 10000
   }

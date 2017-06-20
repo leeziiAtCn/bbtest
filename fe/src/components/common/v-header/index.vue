@@ -9,6 +9,7 @@
                       </span>
                 <el-dropdown-menu slot='dropdown'>
                     <el-dropdown-item v-for='v,i in toolList' :key='v.text'><span
+                            v-loading.fullscreen.lock="fullscreenLoading"
                             @click="tools(i)">{{v.text}}</span>
                     </el-dropdown-item>
                 </el-dropdown-menu>
@@ -58,11 +59,12 @@
             text: '重构参数数据'
           }
         ],
+        fullscreenLoading: false
       }
     },
     methods: {
       tools(index){
-        debugger
+        this.fullscreenLoading = true
         switch (index) {
           case 0 :
             this.rePro()
@@ -72,7 +74,6 @@
             break
         }
       },
-      a(){alert(1)},
       rePro(){
         this.$http.get('base/rebuild').then(() => {
           window.location.reload(true)
