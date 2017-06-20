@@ -329,7 +329,7 @@
         }
         .result {
             line-height: 80px;
-            height: 80px;
+            min-height: 80px;
         }
     }
 </style>
