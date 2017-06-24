@@ -3,9 +3,9 @@
         <v-header title='Interface List'></v-header>
         <el-col :span='4' class="nav">
             <el-menu class='el-menu-vertical-demo' :unique-opened='true' @open="changeInfo">
-                <el-submenu :index='i+""' v-for='v,i in list' :key='v.id'>
+                <el-submenu :index='i+""' v-for='(v,i) in list' :key='v.id'>
                     <template slot='title'>{{v.name}}</template>
-                    <el-menu-item :index='i+"-"+index' v-for="val,index in v.item" :key="val.id" @click='show(val)'>
+                    <el-menu-item :index='i+"-"+index' v-for="(val,index) in v.item" :key="val.id" @click='show(val)'>
                         {{val.name}}
                     </el-menu-item>
                 </el-submenu>
@@ -58,9 +58,11 @@
                                 label="描述">
                         </el-table-column>
                     </el-table>
-                    <el-col :span="6" :offset='18' class="operation">
+                    <el-col :span="10" :offset='14' class="operation">
                         <el-button @click="saveAll">保存</el-button>
                         <el-button type="danger" @click="post()">发射</el-button>
+                        <el-button type="danger" @click="serAsync()">并发100次</el-button>
+                        <el-button type="danger" @click="serSync()">继发100次</el-button>
                     </el-col>
                 </el-col>
             </el-row>
@@ -76,7 +78,7 @@
 <script>
   import vHeader from 'components/common/v-header'
   import vInfo from 'components/common/v-info'
-
+  import qs from 'qs'
   export default {
     data () {
       return {
@@ -198,22 +200,23 @@
             break
         }
       },
-      methodPost(url){
+      methodPost (url) {
         let header = makeheader(this.description)
-        header['Content-Type'] = 'application/x-www-form-urlencoded'
         let body = makeBody(this.description)
-        this.$http({
-          method: 'post',
-          url: url,
-          params: body,
-          requestHeader: {'Content-Type': 'application/json'},
-          responseType: ''
+        if (!header['Content-Type'] || header['Content-Type'] === '') {
+          header['Content-Type'] = 'application/x-www-form-urlencoded'
+          body = qs.stringify(body)
+
+        } else {
+          header['Content-Type'] = 'application/json; charset=utf-8'
+        }
+        this.$http.post(url, body, {
+          headers: header
         }).then(res => {
           this.result = res.data
-
         })
       },
-      methodGet(url){
+      methodGet (url) {
         let header = makeheader(this.description)
         let body = makeBody(this.description)
         this.$http.get(url,
@@ -222,10 +225,33 @@
             params: body
           }).then(res => {
           this.result = res.data
+        }).catch(ret => {
+          this.result = {
+            code: '0',
+            msg: '挂了',
+            data: ret.toString()
+          }
         })
+      },
+      serAsync () {
+        let url = this.info.baseUrl + makeUrl(this.showItem, this.description)
+        let header = makeheader(this.description)
+        let body = makeBody(this.description)
+        body.method = this.showItem.method
+        console.log(body)
+        this.$http.post('/test/async', {url, header, body}, {
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8'
+          }
+        }).then(res => {
+
+        })
+      },
+      serSync () {
+
       }
     },
-    created(){
+    created () {
       this.getSer()
     },
     components: {
