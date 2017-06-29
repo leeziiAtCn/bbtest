@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
+
 <body>
 
 </body>
+
 </html>
 <script>
-  var a = [
-    {a: 1},
-    {a: 2}
-  ]
-  for (let c of a) {
-    c.b = 's'
+  let a = {
+    "req": {
+      "method": "POST",
+      "url": "http://fapi.bblink.cn/User/Register/local_web_mbb",
+      "data": {
+        "code": "8000",
+        "mobile": "18505031050"
+      },
+      "headers": {
+        "user-agent": "node-superagent/3.5.2",
+        "content-type": "application/x-www-form-urlencoded"
+      }
+    },
+    "header": {
+      "server": "nginx",
+      "date": "Wed, 28 Jun 2017 06:07:35 GMT",
+      "content-type": "application/json;charset=UTF-8",
+      "transfer-encoding": "chunked",
+      "connection": "close",
+      "x-application-context": "application:test:23001",
+      "set-cookie": ["uid=wKgAZllTR6ef4hd0CDLgAg==; expires=Thu, 28-Jun-18 06:07:35 GMT; domain=bblink.cn; path=/"],
+      "p3p": "policyref=\"/w3c/p3p.xml\", CP=\"CUR ADM OUR NOR STA NID\""
+    },
+    "status": 200,
+    "text": "{\"code\":\"0000\",\"msg\":\"请求成功\",\"data\":{\"bblinkToken\":\"MTY3NzdjZmZlNmYwNDFiZjk2ZTEwNmRiMTViYTVkMGQxNDk4NjMwMjIzOTgy\",\"nickName\":\"微妈031050\",\"avatar\":\"http://image.bblink.cn/201603-38e0ddfef60a4dcaaa6d39f66e607ffc.png\",\"mobile\":\"18505031050\",\"userName\":\"18505031050\",\"accessToken\":\"\",\"wduserId\":\"\",\"hasSchool\":false,\"needPerfectInfo\":true,\"needPostpartumHealthQue\":true,\"schoolId\":\"\",\"realName\":\"\",\"needUpdate\":true,\"needUpdatePass\":true,\"needUpdateUserStatus\":true,\"oldUser\":true}}"
   }
-  console.log(a)
 </script>

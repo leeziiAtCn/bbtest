@@ -1,0 +1,52 @@
+{
+  "data": [{
+    "req": {
+      "method": "POST",
+      "url": "http://fapi.bblink.cn/User/Register/local_web_mbb",
+      "data": {
+        "code": 8000,
+        "mobile": "18550310501"
+      },
+      "headers": {
+        "user-agent": "node-superagent/3.5.2",
+        "content-type": "application/x-www-form-urlencoded"
+      }
+    },
+    "header": {
+      "server": "nginx",
+      "date": "Wed, 28 Jun 2017 16:07:48 GMT",
+      "content-type": "application/json;charset=UTF-8",
+      "transfer-encoding": "chunked",
+      "connection": "close",
+      "x-application-context": "application:test:23001",
+      "set-cookie": ["uid=wKgAZllT1FSf4hd0CrsUAg==; expires=Thu, 28-Jun-18 16:07:48 GMT; domain=bblink.cn; path=/"],
+      "p3p": "policyref=\"/w3c/p3p.xml\", CP=\"CUR ADM OUR NOR STA NID\""
+    },
+    "status": 200,
+    "text": "{\"code\":\"0000\",\"msg\":\"请求成功\",\"data\":{\"bblinkToken\":\"MTg2Nzg4YTUwOTYxNDRhZjgyMWU1MjBhODg5MzFmZGUxNDk4NjY2MDc2ODkz\",\"nickName\":\"胡建  \",\"avatar\":\"http://image.bblink.cn/201603-e82c94a0d16b4b7c8182dd5ed8d86494.png\",\"mobile\":\"18550310501\",\"userName\":\"18550310501\",\"accessToken\":\"\",\"wduserId\":\"\",\"hasSchool\":true,\"needPerfectInfo\":false,\"needPostpartumHealthQue\":false,\"schoolId\":\"dbef9bc2ecf641f3a7cbcaddc373cf29\",\"realName\":\"\",\"needUpdate\":false,\"needUpdatePass\":false,\"needUpdateUserStatus\":false,\"oldUser\":true}}"
+  }],
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "config": {
+    "transformRequest": {},
+    "transformResponse": {},
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "headers": {
+      "Accept": "application/json, text/plain, */*"
+    },
+    "baseURL": "http://127.0.0.1:3000",
+    "method": "get",
+    "params": {
+      "apiId": "59199be318445f0a20aff7b9",
+      "count": 1
+    },
+    "url": "http://127.0.0.1:3000/test/fire"
+  },
+  "request": {}
+}

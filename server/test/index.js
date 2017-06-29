@@ -3,8 +3,9 @@
  */
 const asyncTest = require('./async')
 const syncTest = require('./sync')
-
+const fire = require('./fire')
 module.exports = {
   asyncTest,
-  syncTest
+  syncTest,
+  fire
 }

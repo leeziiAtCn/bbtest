@@ -1,17 +1,21 @@
-/**
- * Created by leezi on 6/21/2017.
+/*
+ * @Author: leezii 
+ * @Date: 2017-06-26 09:44:48 
+ * @Last Modified by: leezii
+ * @Last Modified time: 2017-06-27 12:00:09
  */
 const router = require('koa-router')()
-const {asyncTest} = require('./../test/index')
+const {
+  asyncTest
+} = require('./../test/index')
 
-router.post('/async', async ctx => {
-  let {url, header, body} = ctx.request.body
-  let {method} = body
-  delete body.method
- try {
-    ctx.response.body = await asyncTest({url, header, body}, method)
- } catch(err) {
-    ctx.response.body = "我挂了,等会"
- }
+const {
+  makeRequest
+} = require('./../utils/index')
+
+router.get('/fire', async ctx => {
+  let req = await makeRequest(ctx.query.apiId)
+  let res = await asyncTest(req,ctx.query.count)
+  ctx.response.body = res
 })
 module.exports = router

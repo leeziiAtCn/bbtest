@@ -15,5 +15,4 @@ app.use(router.routes())
 router.use('/base', base.routes(), base.allowedMethods())
 router.use('/api', api.routes(), api.allowedMethods())
 router.use('/test', test.routes(), test.allowedMethods())
-
 app.listen('3000')

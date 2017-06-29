@@ -8,7 +8,7 @@ let sequelize = new Sequelize('test', sqlOpt.name, sqlOpt.pwd, {
   dialect: 'mysql',
   port: sqlOpt.port,
   pool: {
-    max: 500,
+    max: 5000,
     min: 0,
     idle: 10000
   }
@@ -55,10 +55,17 @@ module.exports = {
       where: {}
     })
   },
-  searchByid (params) {
+  searchByDid (params) {
     return ser.findAll({
       where: {
         did: params.id
+      }
+    })
+  },
+  searchByid (params) {
+    return ser.findAll({
+      where: {
+        id: params.id
       }
     })
   },

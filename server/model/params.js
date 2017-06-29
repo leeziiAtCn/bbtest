@@ -8,7 +8,7 @@ let sequelize = new Sequelize('test', sqlOpt.name, sqlOpt.pwd, {
   dialect: 'mysql',
   port: sqlOpt.port,
   pool: {
-    max: 500,
+    max: 5000,
     min: 0,
     idle: 10000
   }
@@ -26,7 +26,7 @@ let params = sequelize.define(
     default: Sequelize.STRING,
     description: Sequelize.STRING,
     required: Sequelize.INTEGER,
-    what: Sequelize.STRING,
+    what: Sequelize.INTEGER
   }, {
     freezeTableName: true,
     tableName: 'params',
@@ -34,7 +34,7 @@ let params = sequelize.define(
   }
 )
 module.exports = {
-  add(param){
+  add(param) {
     return params.create({
       id: param.id,
       did: param.did,
@@ -47,12 +47,12 @@ module.exports = {
       what: param.what
     })
   },
-  delAll(){
+  delAll() {
     return params.destroy({
       where: {}
     })
   },
-  searchBy2id (p) {
+  searchBy2id(p) {
     return params.findAll({
       where: {
         id: p.id,
@@ -60,7 +60,7 @@ module.exports = {
       }
     })
   },
-  changeParam(p){
+  changeParam(p) {
     return params.update({
       key: p.key,
       default: p.defaultValue,
@@ -68,6 +68,13 @@ module.exports = {
     }, {
       where: {
         pid: p.pid
+      }
+    })
+  },
+  searchbyId(p) {
+    return params.findAll({
+      where: {
+        id: p.id
       }
     })
   }

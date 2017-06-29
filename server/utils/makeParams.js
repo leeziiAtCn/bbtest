@@ -2,7 +2,8 @@
  * Created by leezi on 6/18/2017.
  */
 const uuid = require('node-uuid')
-function makeParams (data) {
+
+function makeParams(data) {
   data = JSON.parse(data).data
   let bodyKey = data.queryParam
   let headerKey = data.header
@@ -12,12 +13,13 @@ function makeParams (data) {
     return {
       id: data._id,
       did: data.group._id,
-      type: 1,// 1body 0 header 2rest
+      type: 1, // 1body 0 header 2rest
       key: val.name,
       required: val.must, // 1 必传 0 不必
       description: val.remark,
       default: '',
-      pid: uuid.v4()
+      pid: uuid.v4(),
+      what: val.what || 0
     }
   })
   let rheaderKey = headerKey.map(val => {
@@ -29,7 +31,8 @@ function makeParams (data) {
       required: val.must, // 1 必传 0 不必
       description: val.remark,
       default: '',
-      pid: uuid.v4()
+      pid: uuid.v4(),
+      what: val.what || 0
     }
   })
   let rresetKey = resetKey.map(val => {
@@ -41,7 +44,8 @@ function makeParams (data) {
       required: val.must, // 1 必传 0 不必
       description: val.remark,
       default: '',
-      pid: uuid.v4()
+      pid: uuid.v4(),
+      what: val.what || 0
     }
   })
   return [...rbodyKey, ...rheaderKey, ...rresetKey]

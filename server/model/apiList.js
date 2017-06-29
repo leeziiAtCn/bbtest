@@ -8,7 +8,7 @@ let sequelize = new Sequelize('test', sqlOpt.name, sqlOpt.pwd, {
   dialect: 'mysql',
   port: sqlOpt.port,
   pool: {
-    max: 500,
+    max: 5000,
     min: 0,
     idle: 10000
   }
@@ -25,7 +25,8 @@ let api = sequelize.define(
     description: Sequelize.STRING,
     createTime: Sequelize.INTEGER,
     did: Sequelize.STRING,
-    status: Sequelize.INTEGER
+    status: Sequelize.INTEGER,
+    content_type: Sequelize.INTEGER
   }, {
     freezeTableName: true,
     tableName: 'apilist',
@@ -33,7 +34,7 @@ let api = sequelize.define(
   }
 )
 module.exports = {
-  add(params){
+  add(params) {
     return api.create({
       id: params.id,
       name: params.name,
@@ -42,37 +43,54 @@ module.exports = {
       description: params.description,
       createTime: params.createTime,
       did: params.did,
-      status: params.status
+      status: params.status,
+      content_type: params.content_type
     })
   },
-  search(params){
+  search(params) {
     return api.findAll({
       where: {
         id: params.id
       }
     })
   },
-  searchbyDid(params){
+  searchbyDid(params) {
     return api.findAll({
       where: {
         did: params.id
       }
     })
   },
-  searchAll(params){
+  searchbyId(p) {
+    return api.findAll({
+      where: {
+        id: p.id
+      }
+    })
+  },
+  searchAll(params) {
     return api.findAll({
       where: {}
     })
   },
-  delAll(){
+  delAll() {
     return api.destroy({
       where: {}
     })
   },
-  searchLive(){
+  searchLive() {
     return api.findAll({
       where: {
         status: 0
+      }
+    })
+  },
+  changeType(params) {
+    return api.update({
+      content_type: params.content_type
+    }, {
+      where: {
+        id: params.id
       }
     })
   }

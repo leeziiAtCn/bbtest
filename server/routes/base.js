@@ -2,17 +2,34 @@
  * Created by leezi on 6/17/2017.
  */
 const router = require('koa-router')()
-const {getProList, getInterfaces, getApi} = require('./../getApi/index')
-const {prod_m, ser_m, api_m, param_m} = require('./../model/index')
-const {makeParams} = require('./../utils/index')
-router.get('/rebuild', async (ctx, next) => {
+// 爬虫
+const {
+  getProList,
+  getInterfaces,
+  getApi
+} = require('./../getApi/index')
+// 数据模型
+const {
+  prod_m,
+  ser_m,
+  api_m,
+  param_m
+} = require('./../model/index')
+// 制造请求参数
+const {
+  makeParams
+} = require('./../utils/index')
+// 重构项目,模块,接口数据
+router.get('/rebuild', async(ctx, next) => {
   // 清空所有表
   await prod_m.delAll()
   await ser_m.delAll()
   await api_m.delAll()
   // 拉取项目列表
   let info = await getProList()
-  let {data} = JSON.parse(info.text)
+  let {
+    data
+  } = JSON.parse(info.text)
   for (let val of data) {
     // 存入 项目表
     await prod_m.add({
@@ -56,7 +73,8 @@ router.get('/rebuild', async (ctx, next) => {
           description: '',
           createTime: +new Date(),
           did: v._id,
-          status: +v.type
+          status: +v.type,
+          content_type: 0 // 0 未定义 1 json 2 form 
         })
       }
     }
@@ -65,7 +83,8 @@ router.get('/rebuild', async (ctx, next) => {
   ctx.response.body = 'ok'
 
 })
-router.get('/reset', async (ctx, next) => {
+
+router.get('/reset', async(ctx, next) => {
   // 将参数表清空
   await param_m.delAll()
   // 查接口表

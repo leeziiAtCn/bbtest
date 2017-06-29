@@ -3,7 +3,9 @@
  */
 const makeCookie = require('./makeCookie')
 const makeParams = require('./makeParams')
+const makeRequest = require('./makeRequest')
 module.exports = {
   makeCookie,
-  makeParams
+  makeParams,
+  makeRequest
 }
